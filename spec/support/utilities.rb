@@ -29,9 +29,10 @@ end
 
 RSpec::Matchers.define :reflect_logged_in_status do |user|
 	match do |page|
-  		expect(page).to have_title(user.name)
-		expect(page).to have_link('Profile',	href: user_path(user))
-  		expect(page).to have_link('Settings',	href: edit_user_path(user))
-  		expect(page).to have_link('Sign out',	href: signout_path)
-  	end
+		expect(page).to have_title(user.name)
+	  expect(page).to have_link('Profile',	href: user_path(user))
+		expect(page).to have_link('Settings',	href: edit_user_path(user))
+		expect(page).to have_link('Sign out',	href: signout_path)
+    expect(page).to have_link('Users', href: users_path)
+	end
 end
