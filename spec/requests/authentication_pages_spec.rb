@@ -36,6 +36,7 @@ describe "Authentication" do
 
       describe "followed by signout" do
         before { click_link "Sign out" }
+        it { should reflect_logged_out_status }
         it { should have_link ('Sign in') }
       end
   	end
