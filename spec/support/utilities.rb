@@ -26,23 +26,3 @@ RSpec::Matchers.define :have_error_message do |message|
 		expect(page).to have_selector('div.alert.alert-error', text: message)
 	end
 end
-
-RSpec::Matchers.define :reflect_logged_in_status do |user|
-	match do |page|
-		expect(page).to have_title(user.name)
-	  	expect(page).to have_link('Profile',	href: user_path(user))
-		expect(page).to have_link('Settings',	href: edit_user_path(user))
-		expect(page).to have_link('Sign out',	href: signout_path)
-    	expect(page).to have_link('Users', href: users_path)
-	end
-end
-
-RSpec::Matchers.define :reflect_logged_out_status do
-	match do |page|
-		expect(page).not_to have_title(user.name)
-	  	expect(page).not_to have_link('Profile',	href: user_path(user))
-		expect(page).not_to have_link('Settings',	href: edit_user_path(user))
-		expect(page).not_to have_link('Sign out',	href: signout_path)
-    	expect(page).not_to have_link('Users', href: users_path)
-    end
-end
